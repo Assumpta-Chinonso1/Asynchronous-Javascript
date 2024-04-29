@@ -65,46 +65,64 @@
 
   //}
   //document.querySelector('button').addEventListener('click',toggle)
- //const posts = [
-  //{titles: 'post one', body: 'This is post one'},
-  //{titles: 'post Two', body: 'This is post Two'},
-  //{titles: 'post Three', body: 'This is post Three'}
-  //];
+ const posts = [
+  {titles: 'post one', body: 'This is post one'},
+  {titles: 'post Two', body: 'This is post Two'},
+  {titles: 'post Three', body: 'This is post Three'}
+  ];
 
- //function createPosts(post, callback) {
-  //setTimeout(() => {
-    //posts.push(post)
-    //callback()
-  ///}, 2000);
-   //}
- ///function getPosts() {
-  ///setTimeout(() => {
-    //posts.forEach(function (posts){
-      //const div = document.createElement('div');
-      //div.innerHTML = `<strong>${posts.titles} </strong> - ${posts.body}`
-     // document.querySelector('#posts').appendChild(div)
-    //})
-  //}, 1000);
- //}
-//createPosts({titles: 'post four', body: 'This is post four'}, getPosts)
+ function createPosts(post) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+
+      let error = false;
+   if (!error) {
+      posts.push(post)
+      resolve()
+
+   } else{
+    reject('Something went wrong')
+   }
+    }, 2000);
+  })
+
+   }
+ function getPosts() {
+  setTimeout(() => {
+    posts.forEach(function (posts){
+      const div = document.createElement('div');
+      div.innerHTML = `<strong>${posts.titles} </strong> - ${posts.body}`
+      document.querySelector('#posts').appendChild(div)
+    })
+   }, 1000);
+ }
+  function showError(error) {
+    const h3 = document.createElement('h3')
+    h3.innerHTML = `<strong>${error}</strong>`;
+    document.getElementById('posts').appendChild(h3)
+  }
+
+createPosts({titles: 'post four', body: 'This is post four'})
+.then(getPosts)
+.catch(showError)
 
 
 
-const xhr = new XMLHttpRequest ();
+//const xhr = new XMLHttpRequest ();
 
    //xhr.open('GET', './movies.json');
-   xhr.open('GET', 'https://api.github.com/users/Assumpta-Chinonso1/repos');
-xhr.onreadystatechange = function () {
- if (this.readyState === 4 && this.status === 200) {
+  // xhr.open('GET', 'https://api.github.com/users/Assumpta-Chinonso1/repos');
+  //xhr.onreadystatechange = function () {
+ //if (this.readyState === 4 && this.status === 200) {
     //console.log(JSON.parse(this.responseText));
-    const data = JSON.parse(this.responseText);
+ //   const data = JSON.parse(this.responseText);
 
-    data.forEach((repo) => {
-      const li = document.createElement('li')
-      li.innerHTML = `<strong>${repo.name}</strong> - ${repo.description}`
-      document.querySelector('#results').appendChild(li)
-    })
-  }
-}
+   // data.forEach((repo) => {
+     // const li = document.createElement('li')
+     // li.innerHTML = `<strong>${repo.name}</strong> - ${repo.description}`
+     // document.querySelector('#results').appendChild(li)
+   // })
+ // }
+ // }
 
-xhr.send()
+ //xhr.send()

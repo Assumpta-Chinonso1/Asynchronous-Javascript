@@ -8,7 +8,7 @@
  
  body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: floralwhite;
+    background-color: rgb(239, 237, 233);
     padding: 0 40px;
     line-height: 1.5;
 }
@@ -78,10 +78,19 @@
     text-align: center;
     line-height: 1.3;
   }
- 
-  ul{
-    padding: 0;
+
+  #posts{
+    list-style: none;
+    background: #f4f4f4;
+    margin: 5px;
+    padding: 15px;
+    line-height: 1.8;
+    display: contents;
+    background-color: #333;
   }
+ ul{
+  line-height: 1.5;
+ }
 
   li{
     list-style: none;
